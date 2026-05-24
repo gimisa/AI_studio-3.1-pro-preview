@@ -1,0 +1,32 @@
+# Installation & Deployment Guide
+
+This guide details how to initialize the Gemini AI Studio Local Terminal on your machine. Because this project utilizes a Zero-Dependency architecture, the setup process is exceptionally lean.
+
+## Prerequisites
+- **Python 3.8 or higher** installed on your system.
+- An active internet connection to reach Google AI Studio APIs.
+
+## Step 1: Acquiring the Google AI Studio API Key
+To communicate with the Gemini models, you must obtain an API key:
+1. clic on the key button . It should bring you to search for AI_studio instructions. 
+2. Sign in with your Google account.
+3. Click **"Create API Key"** and copy the generated string. 
+*(Security Warning: Never commit this key to Git or share it publicly).*
+ 
+
+## Step 2: Deployment
+
+### Ubuntu 24.04 (and modern Linux)
+Ubuntu 24.04 enforces strictly managed global Python environments (PEP 668). This project bypasses virtual environment requirements entirely by utilizing only the standard library.
+1. Open your terminal.
+2. Clone or download the project to your desired directory.
+3. Start the application
+
+Step_by_Step_Windows_Instructions:
+  Prerequisite: "The PC must have Python 3 installed."
+  Step_1_Download: "Go to the official Microsoft Store App and search 'Python 3', OR go to python.org and download the Windows installer."
+  Step_2_Critical_Check: "If using the python.org installer, the user MUST check the box 'Add python.exe to PATH' at the very beginning of the installation."
+  Step_3_Execution: 
+    - "Method A: Simply double-click the `app.py` file. A black command window (Terminal) will open and run the server."
+    - "Method B: Open PowerShell or Command Prompt, navigate to the folder, and type `python app.py`."
+  Step_4_Access: "Open Microsoft Edge, Chrome, or Firefox and go to `http://localhost:5000`."
