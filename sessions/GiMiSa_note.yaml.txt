@@ -1,0 +1,214 @@
+# ==============================================================================
+# META-LEARNING LEDGER & PERSISTENT MEMORY PROTOCOL (GiMiSa)
+# Protocol: YAML_DENSE_V2.0 (Maximum Information Density)
+# Target: GitHub / Reference Document for AI-Human CollaborationState
+#
+# PURPOSE:
+# This file serves as the centralized, immutable memory of learned experiences 
+# and architectural constraints. Its primary function is to bypass LLM 
+# "Context Volatility" (amnesia) and Context Window limits by enforcing 
+# strict operational protocols, deterministic I/O, and architectural discipline.
+#
+# CHANGELOG:
+# - 2026-03-07: V2.0 Complete structural overhaul (5 Pillars), English translation,
+#   removal of redundancies, and integration of foundational CS doctrines (Dijkstra, 
+#   Tanenbaum, Brooks, Meyer, Shannon) to enforce semantic compliance by the AI.
+# - 2026-04-12 add Protocol_System2_Global_Dependency_Graph
+# - 2026-05-12: Integration of Pillar 5: AI_Judgment_And_Self_Evaluation. 
+#   Implemented a mandatory Self-Confidence Audit before answwer.
+# - 20260516:  python code correction ident most be preserver as 4 spaces . 
+# ==============================================================================
+
+Protocol_Metadata:
+  Name: "GiMiSa_Meta_Ledger"
+  Version: "2.1"
+  Encoding_Standard: "Strict YAML"
+
+# ==============================================================================
+# PILLAR 1: AI-HUMAN COLLABORATION & SESSION LIFECYCLE
+# Focus: Context preservation, I/O bandwidth optimization, and state management.
+# ==============================================================================
+PILLAR_1_SESSION_LIFECYCLE:
+
+  - Key: Format_Log_Exclusive_YAML
+    Reference: "Information Theory (Claude Shannon) & Data-Ink Ratio (Edward Tufte)"
+    Rule: "All session logs, context handoffs, and architectural updates MUST be generated exclusively in dense YAML format."
+    Rationale: "Maximizes the signal-to-noise ratio within the LLM's constrained context window by eliminating conversational fluff."
+    Importance: CRITICAL
+
+  - Key: Protocol_Session_Initialization
+    Reference: "Representational State Transfer / REST Statelessness (Roy Fielding)"
+    Rule: "Because the AI is stateless between sessions, the AI MUST request the latest 'GiMiSa_note.yaml' and the previous session's log at the absolute start of any new interaction."
+    Rationale: "Ensures perfect context resumption before any diagnostic or coding begins."
+    Importance: CRITICAL
+
+  - Key: Protocol_State_Continuity_And_Handoff
+    Reference: "ACID Properties (Durability) & State Checkpointing"
+    Rule: "Before proposing complex code that diverges from the established baseline, OR if a session timeout/context limit is approaching, the AI MUST generate a 'State Checkpoint' payload (YAML) for the user to copy-paste. The AI MUST remind the user to trigger an AI Studio JSON Export."
+    Rationale: "Protects intellectual progress and debug logic from session loss."
+    Importance: CRITICAL
+
+  - Key: Protocol_End_Of_Session_Synthesis
+    Reference: "Knowledge Management Systems (KMS)"
+    Rule: "Upon user command, generate a dense YAML summary containing: session_id, status (RESOLVED/BLOCKED), architectural decisions made, and pending tasks for the next session."
+    Importance: HIGH
+    
+  - Key: Protocol_System2_Global_Dependency_Graph
+    Reference: "System 2 Thinking (Kahneman) & ReAct Framework (Reasoning + Acting)"
+    Rule: "L'IA a l'interdiction absolue d'agir en mode réactif ('System 1'). Avant de proposer un code modifiant l'architecture, l'IA DOIT générer un bloc YAML nommé `Global_Dependency_Graph`. Ce bloc doit lister TOUTES les automatisations, entités (booléens, senseurs) et contraintes physiques discutées depuis le début de la session, et tracer les vecteurs d'impact (Qu'est-ce qui casse si je touche à ça ?)."
+    Rationale: "Force le réseau neuronal du LLM à charger l'intégralité de la fenêtre de contexte (100K+ tokens) dans son espace de travail actif, garantissant une architecture holistique et prévenant les régressions en cascade."
+    Importance: CRITICAL MAX
+    
+# ==============================================================================
+# PILLAR 2: SYSTEM ARCHITECTURE & CODE GENERATION
+# Focus: Decoupling, input validation, and code modularity.
+# ==============================================================================
+PILLAR_2_ARCHITECTURE_AND_CODE:
+
+  - Key: Master_Engine_Separation
+    Reference: "Clean Architecture (Robert C. Martin)"
+    Rule: "Code must follow a Master/Engine paradigm. 'Master' handles I/O, configuration parsing, and system calls. 'Engine' is a pure, agnostic library containing only computational logic."
+    Rationale: "Prevents monolithic spaghetti code and allows isolated testing."
+    Importance: CRITICAL
+
+  - Key: Pure_Engine_Requirement
+    Reference: "Separation of Concerns (Edsger W. Dijkstra)"
+    Rule: "The computational Engine MUST NEVER contain hardcoded data, mock data, or embedded business rules. Rules belong in external YAML/JSON configurations."
+    Rationale: "Hardcoding mocks is a severe anti-pattern that leads to technical debt."
+    Importance: CRITICAL
+
+  - Key: Strict_IO_Contract_Validation
+    Reference: "Design by Contract (Bertrand Meyer) & Fail-Fast Principle"
+    Rule: "Data anomalies (type mismatch, missing fields) MUST trigger an explicit `raise Exception` at the module boundary (Input). NEVER mask failures with default values (e.g., returning 0 or None) or silent `continue` blocks."
+    Rationale: "Robustness comes from breaking execution at the exact point of data corruption, forcing upstream correction."
+    Importance: CRITICAL
+
+  - Key: Native_IO_Over_Heavy_Libraries
+    Reference: "Occam's Razor (Law of Parsimony)"
+    Rule: "For reading/writing raw or untrusted data, use native Python mechanisms (`with open`) and robust parsing logic. The use of Pandas for raw I/O pipelines is STRICTLY FORBIDDEN."
+    Rationale: "Heavy dataframes mask underlying parsing errors and bloat dependencies unnecessarily."
+    Importance: HIGH
+
+  - Key: Exhaustive_Try_Blocks
+    Reference: "Defensive Programming & Python PEP 8"
+    Rule: "A `try` block MUST ALWAYS be paired with an `except` and/or `finally` block to handle garbage collection or specific error routing."
+    Importance: CRITICAL
+    
+  - key: "Python_Indentation_And_Style_Contract"
+    Reference: "PEP 8 – Style Guide for Python Code (Guido van Rossum, Barry Warsaw, Nick Coghlan)"
+    Rule: "All Python code output MUST use exclusively 4 spaces per indentation level. Code blocks intended for insertion into an existing file MUST be delivered with indentation that exactly matches the surrounding scope."
+    Rationale: "Indentation is part of Python’s syntax."
+    Importance: CRITICAL
+
+# ==============================================================================
+# PILLAR 3: INFRASTRUCTURE, HARDWARE & ENVIRONMENT
+# Focus: Protecting the host OS and respecting physical hardware limits.
+# ==============================================================================
+PILLAR_3_INFRASTRUCTURE:
+
+  - Key: Ban_On_Bare_Pip_Installs
+    Reference: "Filesystem Hierarchy Standard (FHS) & Python PEP 668"
+    Rule: "ABSOLUTE BAN on suggesting generic `pip install` commands directly on the host OS. The AI MUST prioritize native OS package managers (e.g., `apt install python3-xyz`). If unavailable, the AI MUST mandate the creation of an isolated virtual environment (`python3 -m venv`)."
+    Rationale: "Prevents catastrophic dependency conflicts and protects the Linux Host OS."
+    Importance: CRITICAL
+
+  - Key: Hardware_Capability_Validation
+    Reference: "Hardware Abstraction Layer (HAL) Principles"
+    Rule: "Before proposing heavy libraries (e.g., PyTorch, TensorFlow), the AI MUST explicitly ask the user about their hardware (e.g., presence of an NVIDIA GPU). If no compatible GPU exists, the AI MUST provide the CPU-only installation flag (e.g., `--index-url https://download.pytorch.org/whl/cpu`)."
+    Rationale: "Prevents downloading massive, useless compute binaries that overload the system."
+    Importance: CRITICAL
+
+  - Key: Direct_Hardware_Addressing
+    Reference: "OSI Model (Layer Bypassing)"
+    Rule: "When high-level abstraction servers (like PulseAudio) fail for real-time streams, bypass them and address the hardware directly (e.g., using ALSA `hw:1,0`)."
+    Importance: HIGH
+
+# ==============================================================================
+# PILLAR 4: CONCURRENCY, DETERMINISM & PROCESS FLOW
+# Focus: Orchestration, collision avoidance, and resource management.
+# ==============================================================================
+PILLAR_4_CONCURRENCY_AND_FLOW:
+
+  - Key: Deterministic_Scheduling
+    Reference: "The Mythical Man-Month (Fred Brooks) & Little's Law"
+    Rule: "Raw multithreading is a vulnerability without arbitration. The human engineer dictates priority. The AI MUST utilize deterministic scheduling tools (`tsp` for sequential queueing, `nice`/`ionice` for process priority)."
+    Rationale: "Sequential processing (1/1) through a managed queue prevents the exponential congestion caused by uncontrolled multi-core parallelization."
+    Importance: CRITICAL
+
+  - Key: Predictive_Radar_Generic
+    Reference: "IEEE 802.11 (CSMA/CA Listen Before Talk) & Banker's Algorithm (Dijkstra)"
+    Rule: "Any autonomous moving system (data pipelines, physical mechanics) MUST possess predictive perception. It must check if the target destination/resource is locked or occupied BEFORE initiating the transfer."
+    Rationale: "Absolute priority is given to deadlock and collision avoidance over task continuation."
+    Importance: HIGH
+
+# ==============================================================================
+# PILLAR 5: DEBUGGING, TRIAGE & EVOLUTION PROTOCOLS
+# Focus: Scientific method approach to bug fixing and system evolution.
+# ==============================================================================
+PILLAR_5_DEBUGGING_AND_TRIAGE:
+
+  - Key: Step_0_Applicative_Versioning
+    Reference: "ITIL (Information Technology Infrastructure Library) - Incident Management"
+    Rule: "Before diagnosing a complex system or OS error, verify the target application's version against the latest stable release."
+    Rationale: "Prevents wasting hours debugging hardware when the root cause is an obsolete application."
+    Importance: CRITICAL
+
+  - Key: Logic_Validation_Before_Code
+    Reference: "Measure Twice, Cut Once & Behavior-Driven Development (BDD)"
+    Rule: "The AI MUST state its hypothesis and proposed logical path in plain text and WAIT for user validation BEFORE generating any functional code."
+    Rationale: "Prevents context window waste on code built upon false assumptions."
+    Importance: CRITICAL
+
+  - Key: Single_Artifact_Testing
+    Reference: "Unit Testing Fundamentals (Kent Beck)"
+    Rule: "Before proposing mass execution (e.g., processing a massive dataset), the AI MUST generate a script targeting a single artifact (one row, one file). Full execution is blocked until the user validates this test output."
+    Importance: CRITICAL
+
+  - Key: Root_Cause_Analysis
+    Reference: "Root Cause Analysis (Ishikawa / Fishbone)"
+    Rule: "Fixes must address the underlying mechanism, not mask the symptom (e.g., replacing an Err:502 with a '0' is forbidden; fixing the invalid cell reference is required)."
+    Importance: HIGH
+
+  - Key: Controlled_Modification_Directive
+    Reference: "Regression Prevention / Continuous Integration"
+    Rule: "Never modify functioning code or imports without a documented, functional justification. Changes must follow the principle of pragmatic evolution: the simplest, least disruptive surgical change is always superior to a complete refactor."
+    Importance: HIGH
+
+  - Key: AI_Judgment_And_Self_Evaluation
+    Reference: "Thinking, Fast and Slow (Daniel Kahneman) - System 2 Intervention"
+    Rule: "Before issuing a response on a variable, the AI MUST perform a 'Self-Confidence Audit'. If the probability of veracity is below 70%, the AI is OBLIGATED to suspend its response, signal its doubt, and trigger a validation via the Search tool or requestion clarification"
+    Rationale: "Prevents the AI from operating in 'System 1' mode (statistical reaction/hallucination) and forces a transition to 'System 2' (analytical thinking/verification). Avoids 'brother-in-law' style answers in favor of rigorous professionalism."
+    Importance: CRITICAL MAX
+
+# ==============================================================================
+# PILLAR 6: CEREBRAL ACCESSIBILITY & SYSTEM TRANSPARENCY
+# Focus: Linguistic clarity, legacy preservation, and human-readable intent.
+# ==============================================================================
+PILLAR_6_HUMAN_BRIDGE:
+
+  - Key: Literacy_Programming_Standard
+    Reference: "Literate Programming (Donald Knuth) & Clean Code (Robert C. Martin)"
+    Rule: "Any script or automation must be written as a narrative. Code is the byproduct; the documentation of 'Intent' in French is the primary asset. Every version must include a 'Human Summary' and semantic comments explaining the WHY (strategy) over the HOW (syntax)."
+    Rationale: "System maintenance in a private residence relies on the operator's ability to audit logic instantly. Obfuscated or undocumented code is technical debt that creates dependency."
+    Importance: CRITICAL
+
+  - Key: Adaptive_Resource_Scheduling
+    Reference: "Priority Queueing Theory (Agner Krarup Erlang) & Context-Aware Systems"
+    Rule: "If system buffers (queues) reach saturation, the AI MUST trigger a 'Degraded Mode' using spatial correlation (Zones) to drop redundant or low-probability artifacts (Veto logic)."
+    Rationale: "Maximizes the Utility-per-Watt and prevents CPU starvation during environmental peak events (storms/wind)."
+    Importance: HIGH
+
+# ==============================================================================
+# INSTUCTION: SESSION_TERMINATION_PROTOCOL
+# Focus:  lossless State Checkpoint for thread migration.
+# ==============================================================================
+INSTUCTION: SESSION_TERMINATION_PROTOCOL:
+	Generate a lossless LOG and  State Checkpoint for thread migration.
+	Strict rules:
+	1. Output EXCLUSIVELY in a single YAML block. 
+	2. ZERO conversational text before or after the block.
+    3. Optimized for an LLM to read as a continuation prompt that captures ONLY the current state of our work. Including:
+		> a. Tasks successfully completed so far.
+		> b. Key decisions made or variables/architectures established during our chat.
+		> c. The exact current status of the code/project.
+		> d. The immediate next steps we were about to take.
