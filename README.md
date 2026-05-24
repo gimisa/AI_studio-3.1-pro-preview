@@ -15,6 +15,3 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
 - **Environment-Based Security:** Adheres to OWASP security standards by managing API keys strictly through environment variables rather than hardcoded configuration files.
 - **Multi-Modal Support:** Easily attach and parse files natively within the browser before sending data to the API.
 
-## Documentation Navigation
-- To set up and run the environment, see [installation.md](installation.md).
-- For operational instructions and UI usage, see [instruction.md](instruction.md).
