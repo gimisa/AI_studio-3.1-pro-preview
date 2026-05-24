@@ -1,27 +1,35 @@
 # Operational Instructions
 
 This document provides a user manual for operating the local web interface and managing your interactions securely.
+Please note that you running GeminiClient(model_name="gemini-3.1-pro-preview") default AI and this package required adherence to the protocol GiMiSa_note.yaml located in sessions folder.
 
 ## 1. Secure API Key Management
 To prevent accidental leakage and ensure compliance with security best practices, the application reads API keys directly from your system's environment variables.
+- in command in local AI_Studio directory whee you downloaded the file simply activate by typing python3 app.py 
+- with no key already define you can get one free for tial purposes .  "User clicks 🔑 -> Browser redirects to Google Search ('get key API Google AI Studio').". 
 
 bash
-export GEMINI_API_KEY_firstProejctKey="your_api_key_here"  << one line per  GEMINI_API_KEY_
-export GEMINI_API_KEY_SecondProejctKey 
+export GEMINI_API_KEY_firstProejctKey="your_freekey"  << one line per  GEMINI_API_KEY_
+export GEMINI_API_KEY_SecondProejctKey and so on 
+- In the UI refresh the page you will be able to select one of the key you saved in your system. 
 **On Windows (Command Prompt):**
 cmd
-set GEMINI_API_KEY="your_api_key_here" << one line per  GEMINI_API_KEY_(s) 
+set GEMINI_API_KEY_newKey="your_api_key_here" << one line per  GEMINI_API_KEY_(s) 
 
 **On Windows (PowerShell):**
 powershell
 $env:GEMINI_API_KEY="your_api_key_here"
+- Refresh: "User reloads the browser (F5)."
+- Resolution: "The Python backend (`os.environ`) now detects the new key, populates the UI dropdown, and the user selects it."
 *Note: The UI will automatically detect the presence of the environment variable and populate the dropdown configuration accordingly.*
 
 ## 2. Interface Usage
 - **Project Selection:** Use the top navigation bar to select or create a new active project context.
 - **Chat Interface:** Type your queries into the bottom input field. You can utilize standard markdown formatting.
 - **File Attachments:** Use the "Attach File" button to include local documents. The UI processes these locally before attaching their contents to the API payload.
-- **Token Tracking:** The header displays active token counts (Input / Output / Cache). Monitor this to optimize your queries and avoid hitting API limits.
+- **Token Tracking:** The header displays active token counts (Input / Output / Cache) for the total project. 
+- **Token Tracking:** The fooder displays the current question queries and avoid hitting API limits. The query includs. gimisa_note restated, the replies ONLY , and the new question. 
+***  note your old  questions are never included in the next context only dense YAML AI answers are. . AI_studio pro start caching after 8K token of context 
 
 ## 3. Session Continuity
 All conversation history is managed locally. 
