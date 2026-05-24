@@ -30,3 +30,20 @@ Step_by_Step_Windows_Instructions:
     - "Method A: Simply double-click the `app.py` file. A black command window (Terminal) will open and run the server."
     - "Method B: Open PowerShell or Command Prompt, navigate to the folder, and type `python app.py`."
   Step_4_Access: "Open Microsoft Edge, Chrome, or Firefox and go to `http://localhost:5000`."
+
+*Note: The UI will automatically detect the presence of the environment variable and populate the dropdown configuration accordingly.*
+
+## 2. Interface Usage
+- **Project Selection:** Use the top navigation bar to select or create a new active project context.
+- **Chat Interface:** Type your queries into the bottom input field. You can utilize standard markdown formatting.
+- **File Attachments:** Use the "Attach File" button to include local documents. The UI processes these locally before attaching their contents to the API payload.
+- **Token Tracking:** The header displays active token counts (Input / Output / Cache). Monitor this to optimize your queries and avoid hitting API limits.
+
+## 3. Session Continuity
+All conversation history is managed locally. 
+- When you chat, the backend automatically serializes the conversation state.
+- Data is stored natively in the `/sessions` folder as `[project_name].json` files.
+- **Backup/Restore:** To backup your chats, simply copy the `/sessions` folder. No database export is required.
+
+## 4. Shutting Down
+To gracefully stop the application, return to the terminal running the server and press `CTRL + C`. All data is already saved locally.
