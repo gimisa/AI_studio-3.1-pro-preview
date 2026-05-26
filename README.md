@@ -1,4 +1,4 @@
-# AI_studio-3.1-pro-preview client Local Terminal
+# AI_studio-3.1-pro-preview client Local web interface
 
 ## Project Overview
 This project provides a lightweight, **Zero-Dependency** local web terminal integrated with Google AI Studio (Gemini Pro). It acts as a secure, fast, and local graphical interface for interacting with Google's generative models without relying on heavy frontend frameworks or external backend dependencies.
@@ -14,4 +14,4 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
 - **Local Session Storage:** Conversations are persistently stored as JSON files on your local machine, ensuring absolute data privacy.
 - **Environment-Based Security:** Adheres to OWASP security standards by managing API keys strictly through environment variables rather than hardcoded configuration files.
 - **Multi-Modal Support:** Easily attach and parse files natively within the browser before sending data to the API.
-
+- **Context optimisation:** Only send new question with AI output history. Saving context tokens of user input .  
