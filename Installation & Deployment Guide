@@ -11,6 +11,8 @@ To communicate with the Gemini models, you must obtain an API key:
 1. clic on the key button . It should bring you to search for AI_studio instructions. 
 2. Sign in with your Google account.
 3. Click **"Create API Key"** and copy the generated string. 
+4. edit you system file to include it in nano ~/.bashrc
+5. its name shall start with GEMINI_API_KEY_
 *(Security Warning: Never commit this key to Git or share it publicly).*
  
 
@@ -21,8 +23,9 @@ Ubuntu 24.04 enforces strictly managed global Python environments (PEP 668). Thi
 1. Open your terminal.
 2. Clone or download the project to your desired directory.
 3. Start the application
+4. I use screen to make it running continuously 
 
-Step_by_Step_Windows_Instructions:
+Step_by_Step_Windows_Instructions NOT TESTED a docker would probably be simpler email me if needed :
   Prerequisite: "The PC must have Python 3 installed."
   Step_1_Download: "Go to the official Microsoft Store App and search 'Python 3', OR go to python.org and download the Windows installer."
   Step_2_Critical_Check: "If using the python.org installer, the user MUST check the box 'Add python.exe to PATH' at the very beginning of the installation."
