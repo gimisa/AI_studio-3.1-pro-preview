@@ -21,31 +21,8 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
 -  Gemini 3.1 Pro implements a "Context Tier" pricing model. 
      Tier 1 (≤ 200k tokens): Input $2.00 / Cache $0.20
      Tier 2 (> 200k tokens): Input $4.00 / Cache $0.40
-    
--  Pricing tears :
-     50-step progression (20k increment up to 1M tokens), the first 10 requests exist in Tier 1. 
-     The subsequent 40 requests trigger Tier 2 pricing, where costs mathematically double just as the volumetric accumulation of cached tokens reaches its steepest geometric growth.
-
--  mathematical_progression_update:
-    tier_1_calculations_under_200k:
-      requests: "Steps 1 through 10 (20k to 200k total context)"
-      standard_tokens: "220,000 (Req 1: 20k + Req 2: 40k + 8 reqs * 20k)"
-      cached_tokens: "880,000 (Sum of preceding prefixes for reqs 3-10)"
-      standard_cost: "(220,000 / 1,000,000) * $2.00 = $0.440"
-      cached_cost: "(880,000 / 1,000,000) * $0.20 = $0.176"
-      tier_1_total: "$0.616"
-
--   tier_2_calculations_over_200k:
-      requests: "Steps 11 through 50 (220k to 1,000k total context)"
-      standard_tokens: "800,000 (40 reqs * 20k net-new tokens each)"
-      cached_tokens: "23,600,000 (Arithmetic sum of 200k up to 980k across 40 steps)"
-      standard_cost: "(800,000 / 1,000,000) * $4.00 = $3.200"
-      cached_cost: "(23,600,000 / 1,000,000) * $0.40 = $9.440"
-      tier_2_total: "$12.640"
-
-    session_totals:
-      total_tokens_processed: "25,500,000 tokens"
-      total_estimated_input_cost: "$0.616 + $12.640 = $13.256"
+- avoiding 200K tokens implies braking down the project in different session of not more then 200K token context .
+- Deepseek has the same pricing up to 1M token but their token count is differentcompare to gemini for the same input.
     
 ## cost compare to deepseek . 
 -  Deepseek as a higher count of toekn for the same request mainly because it count its thinking process as output which Gemini does not.
