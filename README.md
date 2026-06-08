@@ -49,8 +49,15 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
     
 ## cost compare to deepseek . 
 -  Deepseek as a higher count of toekn for the same request mainly because it count its thinking process as output which Gemini does not.
-root_cause_analysis_tokenizer_mechanics:
-    1_encoding_algorithms: "Models do not read letters; they read numerical tokens mapped from a specific dictionary. Gemini uses a proprietary SentencePiece/Unigram tokenizer with a massive vocabulary (often 256k+ subwords). DeepSeek uses Byte-Pair Encoding (BPE) with a different, often smaller vocabulary (e.g., 100k-128k)."
-    2_fragmentation_ratio: "A larger vocabulary allows the tokenizer to map whole, complex words to a single token. A smaller vocabulary forces the tokenizer to fragment a single word into multiple sub-word tokens (e.g., 'unbelievable' might be 1 token for Gemini, but 3 tokens ['un', 'believ', 'able'] for DeepSeek). This fundamentally alters the characters-per-token ratio."
-    3_invisible_system_prompts: "Web interfaces and API proxies secretly prepend massive 'System Prompts' (safety rules, tool definitions, output formats) before your actual text. If DeepSeek's host platform injects 800 tokens of invisible system instructions while Gemini's host injects only 100 tokens, the reported 'Input Tokens' will diverge massively even if your physical keystrokes were identical."
-
+-  Here is a compared table where a project in DeepSeek of 1M token total context in 42 questions end up with 1M while the same input is provided to Gemnini 3.1 prevview pro :
+-   | Step | Physical Code (Chars) | DS Context Depth | Gem Context Depth | DS Cumul Cost | Gem Cumul Cost | Architectural Status (DeepSeek vs Gemini) |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **1** | 56,000 | 23,970 tkns | 14,511 tkns | $0.017 | $0.032 | Stable / Stable |
+    | **10** | 560,000 | 239,700 tkns | 145,110 tkns | $0.219 | $0.354 | Stable / Stable |
+    | **21** | 1,176,000 | 503,370 tkns | 304,731 tkns | $0.573 | $1.974 | DS Growing / 🔄 Gem Generates Transfer Summary & Resets |
+    | **22** | 1,232,000 | 527,340 tkns | 15,511 tkns | $0.612 | $2.006 | DS Inflating / ✅ Gem Session 2 Starts (Summary Ingested) |
+    | **30** | 1,680,000 | 719,100 tkns | 131,599 tkns | $0.949 | $2.310 | DS High VRAM / Gem Stable |
+    | **40** | 2,240,000 | 958,800 tkns | 276,709 tkns | $1.465 | $3.680 | ⚠️ DS Approaching 1M Limit / Gem Stable |
+    | **41** | 2,296,000 | 982,770 tkns | 291,220 tkns | $1.523 | $3.810 | ⚠️ DS Edge of Capacity / Gem Stable |
+    | **42** | 2,352,000 | 1,006,740 tkns | 305,731 tkns | **$1.582** | **$3.940** | ❌ **DS FATAL 1M OOM CRASH** / ✅ **Gem Stable & Continuing** |
+    
