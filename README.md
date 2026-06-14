@@ -26,6 +26,9 @@ Designed for ultimate cross-platform compatibility and minimal technical debt:
     
 ## cost compare to deepseek . 
 -  Deepseek as a higher count of toekn for the same request mainly because it count its thinking process as output which Gemini does not.
+-  This Application will not retransmit in the context,  the thinking process, nor the user question quewstion or file attached prefiously.  
+Even if those are catched at low cost in usual process they still use up a large portion of the contextual token with a very slight difference in efficiency. 
+
 -  Here is a compared table where a project in DeepSeek of 1M token total context in 42 questions end up with 1M while the same input is provided to Gemnini 3.1 prevview pro but brake down in two session to avoid costly tier 2 :
 -   | Step | Physical Code (Chars) | DS Context Depth | Gem Context Depth | DS Cumul Cost | Gem Cumul Cost | Architectural Status (DeepSeek vs Gemini) |
     | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
